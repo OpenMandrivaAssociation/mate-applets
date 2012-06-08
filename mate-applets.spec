@@ -1,7 +1,7 @@
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
 Version:	1.2.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
@@ -44,13 +44,13 @@ BuildRequires:	pkgconfig(upower-glib)
 Requires:	dbus
 Requires(pre,preun,post):	mate-conf
 Requires:	mate-panel
-Requires:	mate-python-applet
-Requires:	mate-python-extras
-Requires:	mate-python-mateconf
 Requires:	mate-system-monitor
 Requires:	polkit-mate
-Requires:	usermode-consoleonly
 Requires:	pygtk2.0-libglade
+Requires:	python-mate-applet
+#Requires:	python-mate-extras
+Requires:	python-mateconf
+Requires:	usermode-consoleonly
 
 %description
 MATE (GNU Network Object Model Environment) is a user-friendly
