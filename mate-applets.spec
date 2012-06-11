@@ -1,7 +1,7 @@
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
 Version:	1.2.3
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
@@ -69,6 +69,11 @@ MATE desktop environment by embedding small utilities in the MATE panel.
 %build
 NOCONFIGURE=yes ./autogen.sh
 %configure2_5x \
+	--libexecdir=%{_libexecdir}/mate-applets \
+	--enable-ipv6 \
+	--enable-mini-commander \
+	--enable-mixer-applet \
+	--enable-polkit \
 	--enable-suid=no \
 	--disable-scrollkeeper \
 	--disable-schemas-install
@@ -76,10 +81,9 @@ NOCONFIGURE=yes ./autogen.sh
 %make
 
 %install
+MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %makeinstall_std
 %find_lang %{name} --with-gnome --all-name
-
-%define schemas charpick cpufreq-applet drivemount geyes multiload stickynotes
 
 %pre
 if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
