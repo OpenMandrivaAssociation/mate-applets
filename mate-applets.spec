@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/1.2/%{name}-%{version}.tar.xz
+Patch0:		mate-applets-1.2.3_format_not_a_string_literal.patch
 
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd43-xml
@@ -65,6 +66,7 @@ MATE desktop environment by embedding small utilities in the MATE panel.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 NOCONFIGURE=yes ./autogen.sh
@@ -97,6 +99,9 @@ fi
 %{_sysconfdir}/mateconf/schemas/cpufreq-applet.schemas
 %{_sysconfdir}/mateconf/schemas/drivemount.schemas
 %{_sysconfdir}/mateconf/schemas/geyes.schemas
+%{_sysconfdir}/mateconf/schemas/mini-commander-global.schemas
+%{_sysconfdir}/mateconf/schemas/mini-commander.schemas
+%{_sysconfdir}/mateconf/schemas/mixer.schemas
 %{_sysconfdir}/mateconf/schemas/multiload.schemas
 %{_sysconfdir}/mateconf/schemas/stickynotes.schemas
 %{_sysconfdir}/mateconf/schemas/battstat.schemas
@@ -105,12 +110,9 @@ fi
 %{_libexecdir}/matecomponent/servers/MATE_CDPlayerApplet.server
 %{_libexecdir}/matecomponent/servers/MATE_KeyboardApplet.server
 %{_libexecdir}/matecomponent/servers/MATE_MailcheckApplet_Factory.server
-%{_libexecdir}/matecomponent/servers/MATE_MiniCommanderApplet.server
-%{_libexecdir}/matecomponent/servers/MATE_MixerApplet.server
 %{_libexecdir}/matecomponent/servers/MATE_NullApplet_Factory.server
 %{_libexecdir}/matecomponent/servers/MATE_Panel_WirelessApplet.server
-%{_libexecdir}/*applet*
-#{py_puresitedir}/invest*
+%{_libexecdir}/mate-applets/*applet*
 %{_datadir}/dbus-1/system-services/org.mate.CPUFreqSelector.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.AccessxStatusAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.BattstatAppletFactory.service
@@ -119,6 +121,8 @@ fi
 %{_datadir}/dbus-1/services/org.mate.panel.applet.DriveMountAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.GeyesAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MateWeatherAppletFactory.service
+%{_datadir}/dbus-1/services/org.mate.panel.applet.MiniCommanderAppletFactory.service
+%{_datadir}/dbus-1/services/org.mate.panel.applet.MixerAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MultiLoadAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.TrashAppletFactory.service
@@ -131,6 +135,8 @@ fi
 %{_datadir}/mate-panel/applets/org.mate.applets.DriveMountApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.GeyesApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.MateWeatherApplet.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.MiniCommanderApplet.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.MixerApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.MultiLoadApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.StickyNotesApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.TrashApplet.mate-panel-applet
