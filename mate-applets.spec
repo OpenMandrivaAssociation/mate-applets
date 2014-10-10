@@ -2,7 +2,7 @@
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -41,9 +41,6 @@ Requires:	mate-panel
 Requires:	mate-system-monitor
 Requires:	polkit-mate
 Requires:	pygtk2.0-libglade
-#Requires:	python-mate-applet
-#Requires:	python-mate-extras
-#Requires:	python-mateconf
 Requires:	usermode-consoleonly
 
 %description
@@ -63,7 +60,7 @@ MATE desktop environment by embedding small utilities in the MATE panel.
 NOCONFIGURE=yes ./autogen.sh
 
 %build
-%configure2_5x \
+%configure \
 	--libexecdir=%{_libexecdir}/mate-applets \
 	--enable-ipv6 \
 	--enable-polkit \
