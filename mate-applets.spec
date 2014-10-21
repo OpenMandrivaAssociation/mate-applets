@@ -3,7 +3,7 @@
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
 Version:	1.8.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -57,7 +57,6 @@ MATE desktop environment by embedding small utilities in the MATE panel.
 %prep
 %setup -q
 %apply_patches
-NOCONFIGURE=yes ./autogen.sh
 
 %build
 %configure \
