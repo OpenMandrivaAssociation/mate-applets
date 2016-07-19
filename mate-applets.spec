@@ -2,8 +2,8 @@
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.8.1
-Release:	3
+Version:	1.14.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -14,20 +14,17 @@ BuildRequires:	xsltproc
 BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gstreamer-0.10)
-BuildRequires:	pkgconfig(gstreamer-audio-0.10)
-BuildRequires:	pkgconfig(gstreamer-interfaces-0.10)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gstreamer-audio-1.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gtksourceview-2.0)
 #BuildRequires:	pkgconfig(gucharmap-2)
 BuildRequires:	pkgconfig(ice)
-BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(mateweather)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
-BuildRequires:	pkgconfig(mate-icon-theme)
 BuildRequires:	pkgconfig(mate-settings-daemon)
 BuildRequires:	pkgconfig(NetworkManager)
 BuildRequires:	pkgconfig(polkit-gobject-1)
@@ -59,11 +56,14 @@ MATE desktop environment by embedding small utilities in the MATE panel.
 %apply_patches
 
 %build
+export PYTHON=python2
 %configure \
 	--libexecdir=%{_libexecdir}/mate-applets \
 	--enable-ipv6 \
 	--enable-polkit \
-	--enable-suid=no
+	--enable-suid=no \
+	--with-gtk=3.0 \
+	--disable-python
 
 %make
 
@@ -96,20 +96,18 @@ fi
 %{_datadir}/dbus-1/services/org.mate.panel.applet.DriveMountAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.GeyesAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MateWeatherAppletFactory.service
-%{_datadir}/dbus-1/services/org.mate.panel.applet.MultiLoadAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.TimerAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.TrashAppletFactory.service
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.battstat.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.charpick.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.geyes.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.mate.panel.applet.multiload.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.stickynotes.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.cpufreq.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.command.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.timer.gschema.xml
 %{_datadir}/mate-applets/*
-%{_datadir}/mate-2.0/ui/*
+%{_datadir}/mate/ui/*
 %{_datadir}/mate-panel/applets/org.mate.applets.AccessxStatusApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.BattstatApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.CharpickerApplet.mate-panel-applet
@@ -118,13 +116,20 @@ fi
 %{_datadir}/mate-panel/applets/org.mate.applets.DriveMountApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.GeyesApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.MateWeatherApplet.mate-panel-applet
-%{_datadir}/mate-panel/applets/org.mate.applets.MultiLoadApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.StickyNotesApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.TimerApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.TrashApplet.mate-panel-applet
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
 %{_iconsdir}/hicolor/*/apps/*
-%{_iconsdir}/mate/48x48/apps/ax-applet.png
-#{py_sitedir}/mate_invest
+%{py2_puresitedir}/mate_invest
+%{_datadir}/dbus-1/services/org.mate.panel.applet.InvestAppletFactory.service
+%{_datadir}/mate-panel/applets/org.mate.applets.InvestApplet.mate-panel-applet
+%{_mandir}/man1/mate-charpick-applet.1.xz
+%{_mandir}/man1/mate-cpufreq-selector.1.xz
+%{_mandir}/man1/mate-drivemount-applet.1.xz
+%{_mandir}/man1/mate-geyes-applet.1.xz
+%{_mandir}/man1/mate-invest-chart.1.xz
+%{_mandir}/man1/mate-multiload-applet.1.xz
+%{_mandir}/man1/mateweather.1.xz
 
