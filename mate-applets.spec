@@ -18,11 +18,12 @@ BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-audio-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gtksourceview-2.0)
+BuildRequires:	pkgconfig(libgtop-2.0)
 #BuildRequires:	pkgconfig(gucharmap-2)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
-BuildRequires:	pkgconfig(libwnck-1.0)
+BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(mateweather)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(mate-settings-daemon)
@@ -99,6 +100,10 @@ fi
 %{_datadir}/dbus-1/services/org.mate.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.TimerAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.TrashAppletFactory.service
+%{_datadir}/dbus-1/services/org.mate.panel.applet.MultiLoadAppletFactory.service
+%{_datadir}/dbus-1/services/org.mate.panel.applet.NetspeedAppletFactory.service
+%{_datadir}/glib-2.0/schemas/org.mate.panel.applet.multiload.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.panel.applet.netspeed.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.battstat.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.charpick.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.geyes.gschema.xml
@@ -119,9 +124,11 @@ fi
 %{_datadir}/mate-panel/applets/org.mate.applets.StickyNotesApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.TimerApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.TrashApplet.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.MultiLoadApplet.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.NetspeedApplet.mate-panel-applet
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
-%{_iconsdir}/hicolor/*/apps/*
+%{_iconsdir}/hicolor/*/*/*
 %{py2_puresitedir}/mate_invest
 %{_datadir}/dbus-1/services/org.mate.panel.applet.InvestAppletFactory.service
 %{_datadir}/mate-panel/applets/org.mate.applets.InvestApplet.mate-panel-applet
