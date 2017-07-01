@@ -2,12 +2,12 @@
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.14.0
+Version:	1.18.1
 Release:	1
-License:	GPLv2+
+License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://mate-desktop.org
+Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	xsltproc
@@ -63,8 +63,8 @@ export PYTHON=python2
 	--enable-ipv6 \
 	--enable-polkit \
 	--enable-suid=no \
-	--with-gtk=3.0 \
-	--disable-python
+	--disable-python \
+	%{nil}
 
 %make
 
@@ -72,9 +72,7 @@ export PYTHON=python2
 MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %makeinstall_std
 
-# remove unneeded converters
-rm -fr %{buildroot}%{_datadir}/MateConf
-
+# locales
 %find_lang %{name} --with-gnome --all-name
 
 %pre
