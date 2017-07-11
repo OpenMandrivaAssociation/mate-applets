@@ -8,21 +8,28 @@ License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+
+
+BuildRequires:	cpupower-devel
 BuildRequires:	intltool
+BuildRequires:	libiw-devel
 BuildRequires:	mate-common
-BuildRequires:	xsltproc
-BuildRequires:	yelp-tools
+BuildRequires:	mate-notification-daemon
 BuildRequires:	pkgconfig(dbus-glib-1)
+BuildRequires:	pkgconfig(dbus-1)
+BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-audio-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(libgtop-2.0)
-#BuildRequires:	pkgconfig(gucharmap-2)
+BuildRequires:	pkgconfig(gucharmap-2.90)
 BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(mateweather)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
@@ -33,52 +40,24 @@ BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(pygtk-2.0)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(upower-glib)
+BuildRequires:	xsltproc
+BuildRequires:	yelp-tools
 
-Requires:	dbus
 Requires:	mate-panel
-Requires:	mate-system-monitor
-Requires:	polkit-mate
-Requires:	pygtk2.0-libglade
+Requires:	polkit-agent
+Requires:	python-gi
+Requires:	typelib(MatePanelApplet)
 Requires:	usermode-consoleonly
 
 %description
-MATE (GNU Network Object Model Environment) is a user-friendly
-set of applications and desktop tools to be used in conjunction with a
-window manager for the X Window System.  MATE is similar in purpose and
-scope to CDE and KDE, but MATE (like KDE) is based completely on Open Source
-software.  The mate-applets package provides Panel applets which
-enhance your MATE experience.
+The MATE Desktop Environment is the continuation of GNOME 2. It provides an
+intuitive and attractive desktop environment using traditional metaphors for
+Linux and other Unix-like operating systems.
 
-You should install the mate-applets package if you would like to abuse the
-MATE desktop environment by embedding small utilities in the MATE panel.
+MATE is under active development to add support for new technologies while
+preserving a traditional desktop experience.
 
-%prep
-%setup -q
-%apply_patches
-
-%build
-export PYTHON=python2
-%configure \
-	--libexecdir=%{_libexecdir}/mate-applets \
-	--enable-ipv6 \
-	--enable-polkit \
-	--enable-suid=no \
-	--disable-python \
-	%{nil}
-
-%make
-
-%install
-MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-%makeinstall_std
-
-# locales
-%find_lang %{name} --with-gnome --all-name
-
-%pre
-if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
- /bin/rm -rf %{_libdir}/invest-applet 
-fi
+This package provides applets for use with the MATE panel.
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING NEWS README
@@ -126,10 +105,10 @@ fi
 %{_datadir}/mate-panel/applets/org.mate.applets.NetspeedApplet.mate-panel-applet
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
-%{_iconsdir}/hicolor/*/*/*
-%{py2_puresitedir}/mate_invest
 %{_datadir}/dbus-1/services/org.mate.panel.applet.InvestAppletFactory.service
 %{_datadir}/mate-panel/applets/org.mate.applets.InvestApplet.mate-panel-applet
+%{_iconsdir}/hicolor/*/*/*
+%{py2_puresitedir}/mate_invest
 %{_mandir}/man1/mate-charpick-applet.1.xz
 %{_mandir}/man1/mate-cpufreq-selector.1.xz
 %{_mandir}/man1/mate-drivemount-applet.1.xz
@@ -137,4 +116,37 @@ fi
 %{_mandir}/man1/mate-invest-chart.1.xz
 %{_mandir}/man1/mate-multiload-applet.1.xz
 %{_mandir}/man1/mateweather.1.xz
+
+#---------------------------------------------------------------------------
+
+%prep
+%setup -q
+%apply_patches
+
+%build
+export PYTHON=python2
+%configure \
+	--disable-schemas-compile \
+	--enable-stickynotes \
+	--libexecdir=%{_libexecdir}/mate-applets \
+	--with-cpufreq-lib=cpupower \
+	%{nil}
+%make
+
+%install
+%makeinstall_std
+
+# fix permission
+chmod 0755 %{buildroot}%{python_sitelib}/mate_invest/chart.py
+
+# remove compiled python files
+rm -fr %{buildroot}%{python_sitelib}/mate_invest/*.{pyc,pyo}
+
+# locales
+%find_lang %{name} --with-gnome --all-name
+
+%pre
+if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
+ /bin/rm -rf %{_libdir}/invest-applet 
+fi
 
