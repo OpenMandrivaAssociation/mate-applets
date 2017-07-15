@@ -9,10 +9,10 @@ Group:		Graphical desktop/GNOME
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
-
 BuildRequires:	cpupower-devel
 BuildRequires:	intltool
 BuildRequires:	libiw-devel
+BuildRequires:	kernel-headers
 BuildRequires:	mate-common
 BuildRequires:	mate-notification-daemon
 BuildRequires:	pkgconfig(dbus-glib-1)
