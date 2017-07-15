@@ -143,10 +143,10 @@ export PYTHON=python2
 %makeinstall_std
 
 # fix permission
-chmod 0755 %{buildroot}%{python_sitelib}/mate_invest/chart.py
+chmod 0755 %{buildroot}%{python2_sitelib}/mate_invest/chart.py
 
 # remove compiled python files
-rm -fr %{buildroot}%{python_sitelib}/mate_invest/*.{pyc,pyo}
+rm -fr %{buildroot}%{python2_sitelib}/mate_invest/*.{pyc,pyo}
 
 # locales
 %find_lang %{name} --with-gnome --all-name
