@@ -1,5 +1,8 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
+# cpupower requires a kegksu support disabled. It doesn't work with our gksu-polkit
+%bcond_with cpupower
+
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
 Version:	1.18.1
@@ -9,10 +12,11 @@ Group:		Graphical desktop/GNOME
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
+%if %{with cpupower}
 BuildRequires:	cpupower-devel
+%endif
 BuildRequires:	intltool
 BuildRequires:	libiw-devel
-BuildRequires:	kernel-headers
 BuildRequires:	mate-common
 BuildRequires:	mate-notification-daemon
 BuildRequires:	pkgconfig(dbus-glib-1)
@@ -129,7 +133,9 @@ export PYTHON=python2
 	--disable-schemas-compile \
 	--enable-stickynotes \
 	--libexecdir=%{_libexecdir}/mate-applets \
+%if %{with cpupower}
 	--with-cpufreq-lib=cpupower \
+%endif
 	%{nil}
 %make
 
