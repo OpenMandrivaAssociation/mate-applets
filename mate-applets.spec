@@ -8,7 +8,7 @@ Name:		mate-applets
 Version:	1.18.2
 Release:	1
 License:	GPLv2+ and LGPLv2+
-Group:		Graphical desktop/GNOME
+Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
