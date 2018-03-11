@@ -6,7 +6,7 @@
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
 Version:	1.18.2
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
