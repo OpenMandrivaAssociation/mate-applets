@@ -142,17 +142,5 @@ export PYTHON=python2
 %install
 %make_install
 
-# fix permission
-chmod 0755 %{buildroot}%{python2_sitelib}/mate_invest/chart.py
-
-# remove compiled python files
-rm -fr %{buildroot}%{python2_sitelib}/mate_invest/*.{pyc,pyo}
-
 # locales
 %find_lang %{name} --with-gnome --all-name
-
-%pre
-if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
- /bin/rm -rf %{_libdir}/invest-applet 
-fi
-
