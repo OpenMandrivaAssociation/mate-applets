@@ -83,15 +83,16 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/dbus-1/services/org.mate.panel.applet.TrashAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MultiLoadAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.NetspeedAppletFactory.service
+%{_datadir}/glib-2.0/schemas/org.mate.drivemount.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.multiload.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.netspeed.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.battstat.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.charpick.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.geyes.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.mate.stickynotes.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.cpufreq.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.command.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.timer.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.stickynotes.gschema.xml
 %{_datadir}/mate-applets/*
 %{_datadir}/mate/ui/*
 %{_datadir}/mate-panel/applets/org.mate.applets.AccessxStatusApplet.mate-panel-applet
