@@ -109,15 +109,11 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/mate-panel/applets/org.mate.applets.NetspeedApplet.mate-panel-applet
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
-%{_datadir}/dbus-1/services/org.mate.panel.applet.InvestAppletFactory.service
-%{_datadir}/mate-panel/applets/org.mate.applets.InvestApplet.mate-panel-applet
 %{_iconsdir}/hicolor/*/*/*
-%{py2_puresitedir}/mate_invest
 %{_mandir}/man1/mate-charpick-applet.1.xz
 %{_mandir}/man1/mate-cpufreq-selector.1.xz
 %{_mandir}/man1/mate-drivemount-applet.1.xz
 %{_mandir}/man1/mate-geyes-applet.1.xz
-%{_mandir}/man1/mate-invest-chart.1.xz
 %{_mandir}/man1/mate-multiload-applet.1.xz
 %{_mandir}/man1/mateweather.1.xz
 
