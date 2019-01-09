@@ -5,7 +5,7 @@
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.20.0
+Version:	1.20.3
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
@@ -125,7 +125,7 @@ This package provides applets for use with the MATE panel.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 export PYTHON=python2
@@ -137,10 +137,10 @@ export PYTHON=python2
 	--with-cpufreq-lib=cpupower \
 %endif
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # fix permission
 chmod 0755 %{buildroot}%{python2_sitelib}/mate_invest/chart.py
