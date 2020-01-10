@@ -1,8 +1,5 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-# cpupower requires a kegksu support disabled. It doesn't work with our gksu-polkit
-%bcond_with cpupower
-
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
 Version:	1.22.2
@@ -12,7 +9,7 @@ Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
-%if %{with cpupower}
+%ifnarch %{arm} %{armx} %{riscv}
 BuildRequires:	cpupower-devel
 %endif
 BuildRequires:	intltool
@@ -110,12 +107,12 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
 %{_iconsdir}/hicolor/*/*/*
-%{_mandir}/man1/mate-charpick-applet.1.xz
-%{_mandir}/man1/mate-cpufreq-selector.1.xz
-%{_mandir}/man1/mate-drivemount-applet.1.xz
-%{_mandir}/man1/mate-geyes-applet.1.xz
-%{_mandir}/man1/mate-multiload-applet.1.xz
-%{_mandir}/man1/mateweather.1.xz
+%{_mandir}/man1/mate-charpick-applet.1.*
+%{_mandir}/man1/mate-cpufreq-selector.1.*
+%{_mandir}/man1/mate-drivemount-applet.1.*
+%{_mandir}/man1/mate-geyes-applet.1.*
+%{_mandir}/man1/mate-multiload-applet.1.*
+%{_mandir}/man1/mateweather.1.*
 
 #---------------------------------------------------------------------------
 
@@ -128,7 +125,10 @@ This package provides applets for use with the MATE panel.
 	--disable-schemas-compile \
 	--enable-stickynotes \
 	--libexecdir=%{_libexecdir}/mate-applets \
-%if %{with cpupower}
+	--enable-polkit \
+	--enable-ipv6 \
+	--enable-stickynotes \
+%ifnarch %{arm} %{armx} %{riscv}
 	--with-cpufreq-lib=cpupower \
 %endif
 	%{nil}
