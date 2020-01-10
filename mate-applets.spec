@@ -69,7 +69,9 @@ This package provides applets for use with the MATE panel.
 %{_bindir}/*
 %endif
 %{_libexecdir}/mate-applets/*applet*
+%ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/dbus-1/system-services/org.mate.CPUFreqSelector.service
+%endif
 %{_datadir}/dbus-1/services/org.mate.panel.applet.AccessxStatusAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.BattstatAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.CharpickerAppletFactory.service
