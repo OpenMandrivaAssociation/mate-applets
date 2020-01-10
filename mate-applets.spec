@@ -5,7 +5,7 @@
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.22.1
+Version:	1.22.2
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
@@ -38,7 +38,6 @@ BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(mateweather)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(mate-settings-daemon)
-BuildRequires:	pkgconfig(NetworkManager)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(pygtk-2.0)
@@ -125,7 +124,6 @@ This package provides applets for use with the MATE panel.
 %autopatch -p1
 
 %build
-export PYTHON=python2
 %configure \
 	--disable-schemas-compile \
 	--enable-stickynotes \
