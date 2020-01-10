@@ -107,12 +107,12 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
 %{_iconsdir}/hicolor/*/*/*
-%{_mandir}/man1/mate-charpick-applet.1.xz
-%{_mandir}/man1/mate-cpufreq-selector.1.xz
-%{_mandir}/man1/mate-drivemount-applet.1.xz
-%{_mandir}/man1/mate-geyes-applet.1.xz
-%{_mandir}/man1/mate-multiload-applet.1.xz
-%{_mandir}/man1/mateweather.1.xz
+#{_mandir}/man1/mate-charpick-applet.1.xz
+#{_mandir}/man1/mate-cpufreq-selector.1.xz
+#{_mandir}/man1/mate-drivemount-applet.1.xz
+#{_mandir}/man1/mate-geyes-applet.1.xz
+#{_mandir}/man1/mate-multiload-applet.1.xz
+#{_mandir}/man1/mateweather.1.xz
 
 #---------------------------------------------------------------------------
 
