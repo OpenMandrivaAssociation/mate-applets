@@ -1,8 +1,2 @@
-removed_sources:
-  mate-applets-1.14.0.tar.xz: e316ade06cba447908120eee07b777dcfae436cd
-  mate-applets-1.18.1.tar.xz: eb80c6d85256403a01bc6e18714d802638f83c10
-  mate-applets-1.18.2.tar.xz: ecfb69fe256c3c6936a9f0fbc7dd4144c1a50ef9
-  mate-applets-1.20.0.tar.xz: b44c170770bdc3a97f96a8db806cf814eabdcb10
-  mate-applets-1.20.3.tar.xz: 5e927f49322f9ade67be7330e4dbcdbb41b325a3
 sources:
-  mate-applets-1.22.1.tar.xz: e834797d917d633448bb1cb9dbfbe3b98a7ee834
+  mate-applets-1.22.2.tar.xz: f81b79654b7c8c5340bf2a4e2e7625cee79af6a1
