@@ -61,15 +61,21 @@ This package provides applets for use with the MATE panel.
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING NEWS README
+%ifnarch %{arm} %{armx} %{riscv}
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.mate.CPUFreqSelector.conf
+%endif
 %config(noreplace) %{_sysconfdir}/sound/events/mate-battstat_applet.soundlist
+%ifnarch %{arm} %{armx} %{riscv}
 %{_bindir}/*
+%endif
 %{_libexecdir}/mate-applets/*applet*
 %{_datadir}/dbus-1/system-services/org.mate.CPUFreqSelector.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.AccessxStatusAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.BattstatAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.CharpickerAppletFactory.service
+%ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/dbus-1/services/org.mate.panel.applet.CPUFreqAppletFactory.service
+%endif
 %{_datadir}/dbus-1/services/org.mate.panel.applet.CommandAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.DriveMountAppletFactory.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.GeyesAppletFactory.service
@@ -85,7 +91,9 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.battstat.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.charpick.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.geyes.gschema.xml
+%ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.cpufreq.gschema.xml
+%endif
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.command.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.timer.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.stickynotes.gschema.xml
@@ -95,7 +103,9 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/mate-panel/applets/org.mate.applets.BattstatApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.CharpickerApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.CommandApplet.mate-panel-applet
+%ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/mate-panel/applets/org.mate.applets.CPUFreqApplet.mate-panel-applet
+%endif
 %{_datadir}/mate-panel/applets/org.mate.applets.DriveMountApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.GeyesApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.MateWeatherApplet.mate-panel-applet
@@ -104,8 +114,10 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/mate-panel/applets/org.mate.applets.TrashApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.MultiLoadApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.NetspeedApplet.mate-panel-applet
+%ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
+%endif
 %{_iconsdir}/hicolor/*/*/*
 %{_mandir}/man1/mate-charpick-applet.1.*
 %{_mandir}/man1/mate-cpufreq-selector.1.*
