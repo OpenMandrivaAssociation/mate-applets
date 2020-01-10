@@ -125,7 +125,6 @@ This package provides applets for use with the MATE panel.
 	--disable-schemas-compile \
 	--enable-stickynotes \
 	--libexecdir=%{_libexecdir}/mate-applets \
-	--disable-battstat=no \
 	--enable-polkit \
 	--enable-ipv6 \
 	--enable-stickynotes \
