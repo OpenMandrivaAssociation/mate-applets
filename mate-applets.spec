@@ -118,7 +118,8 @@ This package provides applets for use with the MATE panel.
 %ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
-
+%endif
+%ifarch %{arm} %{armx} %{riscv}
 %{_bindir}/mate-cpufreq-selector
 %{_datadir}/dbus-1/system-services/org.mate.CPUFreqSelector.service
 %{_datadir}/dbus-1/services/org.mate.panel.applet.CPUFreqAppletFactory.service
