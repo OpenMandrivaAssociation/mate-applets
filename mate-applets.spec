@@ -62,13 +62,11 @@ This package provides applets for use with the MATE panel.
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING NEWS README
-%ifnarch %{arm} %{armx} %{riscv}
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.mate.CPUFreqSelector.conf
-%endif
 %config(noreplace) %{_sysconfdir}/sound/events/mate-battstat_applet.soundlist
 %ifnarch %{arm} %{armx} %{riscv}
 %{_bindir}/*
 %endif
+%{_datadir}/dbus-1/system.d/org.mate.CPUFreqSelector.conf
 %{_libexecdir}/mate-applets/*applet*
 %ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/dbus-1/system-services/org.mate.CPUFreqSelector.service
