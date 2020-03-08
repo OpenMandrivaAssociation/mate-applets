@@ -118,6 +118,16 @@ This package provides applets for use with the MATE panel.
 %ifnarch %{arm} %{armx} %{riscv}
 %{_datadir}/pixmaps/*
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
+
+%{_bindir}/mate-cpufreq-selector
+%{_datadir}/dbus-1/system-services/org.mate.CPUFreqSelector.service
+%{_datadir}/dbus-1/services/org.mate.panel.applet.CPUFreqAppletFactory.service
+%{_datadir}/glib-2.0/schemas/org.mate.panel.applet.cpufreq.gschema.xml
+%{_datadir}/mate-panel/applets/org.mate.applets.CPUFreqApplet.mate-panel-applet
+%{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
+%{_datadir}/dbus-1/system.d/org.mate.CPUFreqSelector.conf
+%{_datadir}/pixmaps/mate-cpufreq-applet/cpufreq-*.png
+%{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
 %endif
 %{_iconsdir}/hicolor/*/*/*
 %{_mandir}/man1/mate-charpick-applet.1.*
