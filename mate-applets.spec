@@ -100,7 +100,7 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.timer.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.stickynotes.gschema.xml
 %{_datadir}/mate-applets/*
-%{_datadir}/mate/ui/*
+#{_datadir}/mate/ui/*
 %{_datadir}/mate-panel/applets/org.mate.applets.AccessxStatusApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.BattstatApplet.mate-panel-applet
 %{_datadir}/mate-panel/applets/org.mate.applets.CharpickerApplet.mate-panel-applet
