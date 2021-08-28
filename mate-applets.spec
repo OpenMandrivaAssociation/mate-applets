@@ -41,6 +41,7 @@ BuildRequires:	pkgconfig(pygobject-3.0)
 #BuildRequires:	pkgconfig(pygtk-2.0)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(upower-glib)
+BuildRequires:	pkgconfig(libnl-genl-3.0)
 BuildRequires:	xsltproc
 BuildRequires:	yelp-tools
 
