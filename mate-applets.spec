@@ -2,8 +2,8 @@
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.26.0
-Release:	2
+Version:	1.26.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
@@ -14,7 +14,6 @@ BuildRequires:	cpupower-devel
 %endif
 BuildRequires:	autoconf-archive
 BuildRequires:	intltool
-BuildRequires:	libiw-devel
 BuildRequires:	mate-common
 BuildRequires:	mate-notification-daemon
 BuildRequires:	pkgconfig(dbus-glib-1)
@@ -24,7 +23,7 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-audio-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(gtksourceview-3.0)
+BuildRequires:	pkgconfig(gtksourceview-4)
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(gucharmap-2.90)
 BuildRequires:	pkgconfig(ice)
@@ -49,7 +48,6 @@ Requires:	mate-panel
 Requires:	polkit-agent
 Requires:	python-gi
 Requires:	typelib(MatePanelApplet)
-Requires:	usermode-consoleonly
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
@@ -126,24 +124,26 @@ This package provides applets for use with the MATE panel.
 %{_datadir}/dbus-1/services/org.mate.panel.applet.CPUFreqAppletFactory.service
 %{_datadir}/glib-2.0/schemas/org.mate.panel.applet.cpufreq.gschema.xml
 %{_datadir}/mate-panel/applets/org.mate.applets.CPUFreqApplet.mate-panel-applet
-%{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
-%{_datadir}/dbus-1/system.d/org.mate.CPUFreqSelector.conf
 %{_datadir}/pixmaps/mate-cpufreq-applet/cpufreq-*.png
 %{_datadir}/polkit-1/actions/org.mate.cpufreqselector.policy
 %endif
 %{_iconsdir}/hicolor/*/*/*
-%{_mandir}/man1/mate-charpick-applet.1.*
-%{_mandir}/man1/mate-cpufreq-selector.1.*
-%{_mandir}/man1/mate-drivemount-applet.1.*
-%{_mandir}/man1/mate-geyes-applet.1.*
-%{_mandir}/man1/mate-multiload-applet.1.*
-%{_mandir}/man1/mateweather.1.*
+%doc %{_mandir}/man1/mate-charpick-applet.1.*
+%doc %{_mandir}/man1/mate-cpufreq-selector.1.*
+%doc %{_mandir}/man1/mate-drivemount-applet.1.*
+%doc %{_mandir}/man1/mate-geyes-applet.1.*
+%doc %{_mandir}/man1/mate-multiload-applet.1.*
+%doc %{_mandir}/man1/mateweather.1.*
 
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
+
+# (tpg) switch to gtksourceview-4
+# https://github.com/mate-desktop/mate-applets/issues/634
+sed -i -e 's/gtksourceview-3.0/gtksourceview-4/g' configure.ac
+autoreconf -fi
 
 %build
 %configure \
