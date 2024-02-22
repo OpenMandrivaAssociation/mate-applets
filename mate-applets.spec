@@ -1,13 +1,13 @@
-%define url_ver %(echo %{version}|cut -d. -f1,2)
+%define mate_ver	%(echo %{version}|cut -d. -f1,2)
 
 Summary:	Small applications which embed themselves in the MATE panel
 Name:		mate-applets
-Version:	1.26.1
-Release:	2
+Version:	1.28.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
-Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
 
 %ifnarch %{arm} %{armx} %{riscv}
 BuildRequires:	cpupower-devel
@@ -163,3 +163,4 @@ autoreconf -fi
 
 # locales
 %find_lang %{name} --with-gnome --all-name
+
